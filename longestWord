@@ -1,0 +1,58 @@
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+    
+console.log("Welcome to Programiz!");
+var str = "Smart people learn from everything and everyone, average people from their experience, stupid people already, have all the answers";
+var strWout = "";
+var word = "";
+var longestWords = [];
+var longestWord;
+var letterNumber = /^[0-9a-zA-Z ]+$/;
+var count = 0;
+var largestCount=0;
+
+for(var i=0; i<str.length; i++){
+    if(str[i].match(letterNumber)){
+        strWout+=str[i];
+    }
+}
+console.log(strWout);
+for(var i=0;i<strWout.length;i++){
+    if(strWout[i]!=" "){
+    count++
+    word+=strWout[i];
+    }else{
+       
+        if(count>largestCount){
+            largestCount=count;
+            
+            if(longestWords.length != 0){
+                longestWords = [];
+                longestWords.push(word);
+            }
+            else{
+                longestWords.push(word);
+            }
+            
+        } else if(count==largestCount){
+            longestWords.push(word);
+        }
+        word="";
+        count=0;
+    }
+}
+
+console.log(longestWords);
+var countVawel = 0;
+var largeVawel = 0;
+for(var i=0;i<longestWords.length;i++){
+    for(var j=0;j<longestWords[i].length;j++){
+        if(longestWords[i][j]=='a'||longestWords[i][j]=='e'||longestWords[i][j]=='i'||longestWords[i][j]=='o'||longestWords[i][j]=='u'){
+            countVawel+=1;
+        }
+    }
+    if(countVawel>largeVawel){
+        longestWord=longestWords[i];
+    }
+}
+console.log(longestWord);
